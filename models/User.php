@@ -14,7 +14,7 @@ class User extends Object implements IdentityInterface
     public $accessToken;
 
     private static $users = [
-        '100' => [
+       '100' => [
             'id' => '100',
             'username' => 'admin',
             'password' => 'admin',
