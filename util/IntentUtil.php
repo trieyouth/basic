@@ -11,7 +11,13 @@ use yii\helpers\Url;
 
 class IntentUtil extends Object{
 
-    public static function sendParams($name='',$head=''){
+    public static function sendParams($name,$head){
+        if($name === ''){
+            throw new \Exception("util IntentUtil sendParams方法的name参数不可以是空");
+        }
+        if($head === ''){
+            throw new \Exception("util IntentUtil sendParams方法的head参数不可以是空");
+        }
         $view = \Yii::$app->view;
         $view->params['name']=$name;
         $view->params['head']=Url::to($head,true);

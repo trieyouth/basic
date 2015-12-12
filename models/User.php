@@ -48,7 +48,6 @@ class User extends Object implements IdentityInterface
                 return new static($user);
             }
         }
-
         return null;
     }
 
