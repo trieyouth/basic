@@ -17,7 +17,7 @@ class LoginController extends Controller{
     }
 
     public function actionLogin(){
-        echo 'hello sir';
+
     }
 
 }
