@@ -16,12 +16,12 @@ class User extends ActiveRecord implements IdentityInterface
     public static function tableName()
     {
         return 'store';
-    }
+    }//会去找这个表名
 
     /**
      * @inheritdoc
      */
-    public static function findIdentity($id)
+    public static function findIdentity($id)//在当前表中寻找当前$id 默认在主键
     {
         return static::findOne($id);
     }

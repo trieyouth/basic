@@ -28,6 +28,22 @@ class Dishes extends Model
         ];
     }
 
+    public function tableName(){
+        return 'dish';
+    }
+
+
+    public function add(){
+        //添加菜单
+    }
+
+    public function sub(){
+        //删除菜单
+    }
+
+    public  function mod(){
+        //修改菜单
+    }
 
 
 }

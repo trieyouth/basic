@@ -55,8 +55,8 @@ class LoginController extends Controller
 
     public function actionLogin()
     {
-        if(!Yii::$app->user->isGuest){
-            return Yii::$app->response->redirect(['home/index']);
+        if(!Yii::$app->user->isGuest){//看是否已经登陆
+            return Yii::$app->response->redirect(['home/index']);//controller之间的调用
         }
 
         $login = new LoginForm();
@@ -73,7 +73,9 @@ class LoginController extends Controller
 
     public function actionLogout()
     {
+        if(YII::$app->user->isGuest){
 
+        }
     }
 
     public function actionSignUp()
