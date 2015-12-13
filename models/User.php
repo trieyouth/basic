@@ -2,53 +2,37 @@
 
 namespace app\models;
 
-use yii\base\Object;
+use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
-class User extends Object implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface
 {
     public $id;
     public $username;
     public $password;
     public $authKey;
-    public $accessToken;
+    public $token;
 
-    private static $users = [
-       '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+    public static function tableName()
+    {
+        return 'store';
+    }
 
     /**
      * @inheritdoc
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return static::findOne($id);
     }
 
     /**
      * @inheritdoc
      */
+
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-        return null;
+        return static::findOne(['token'=>$token]);
     }
 
     /**
@@ -59,12 +43,7 @@ class User extends Object implements IdentityInterface
      */
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-        return null;
+        return static::findOne(['name'=>$username]);
     }
 
     /**
