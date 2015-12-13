@@ -17,7 +17,7 @@ class LoginController extends Controller
     public $layout = false;
 
 
-    public function behaviors()
+    public function behaviors()//行为验证 是登陆状态还是登出状态 要有什么操作
     {
         return [
             'access' => [
@@ -35,12 +35,12 @@ class LoginController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['login', 'signup'],
-                        'roles' => ['?'],
+                        'roles' => ['?'],//游客身份
                     ],
                     [
                         'allow' => true,
                         'actions' => ['logout'],
-                        'roles' => ['@'],
+                        'roles' => ['@'],//已登录的身份
                     ],
                 ],
             ],
@@ -49,12 +49,14 @@ class LoginController extends Controller
 
     public function actionIndex()
     {
-        echo 'index';
         return $this->render('index');
     }
 
     public function actionLogin()
     {
+        //$store = new store;
+        //$store->id = ;
+
 
     }
 
