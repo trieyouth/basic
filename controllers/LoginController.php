@@ -7,6 +7,7 @@
  */
 namespace app\controllers;
 
+use app\models\LoginForm;
 use Yii;
 use yii\base\Controller;
 use yii\filters\AccessControl;
@@ -54,9 +55,19 @@ class LoginController extends Controller
 
     public function actionLogin()
     {
+        if(!Yii::$app->user->isGuest){
+            return Yii::$app->response->redirect(['home/index']);
+        }
 
-        
+        $login = new LoginForm();
 
+        if($login->load(Yii::$app->request->post()) && $login->validate()){
+            return Yii::$app->response->redirect(['home/index']);
+        }else{
+            return $this->render('login',[
+            'model' => $login,
+        ]);
+        }
 
     }
 
