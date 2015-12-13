@@ -8,8 +8,8 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
     public $id;
-    public $username;
-    public $password;
+    public $name;
+    public $pwd;
     public $authKey;
     public $token;
 
@@ -23,7 +23,13 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+        $user = static::findOne($id);
+        if($user != null) {
+            echo $user->token."ddddd".$user->name."nnnnn";
+        }else{
+            echo 'user is null';
+        }
+        return $user;
     }
 
     /**
@@ -78,6 +84,10 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        $user = $this->find();
+        foreach ($user->all() as $u){
+            echo $u->id.'ccccc';
+        }
+        return $this->pwd === $password;
     }
 }

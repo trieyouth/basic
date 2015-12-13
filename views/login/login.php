@@ -33,8 +33,7 @@ LoginAsset::register($this);
                 'id' => 'login-form',
                 'options' => ['class' => 'form-horizontal'],
                 'fieldConfig' => [
-                    'template' => "{label}<div class=\"col-lg-8\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-                    'labelOptions' => ['class' => 'col-lg-1  control-label'],
+                    'template' => "{label}<div class=\"row\"><div class=\"col-sm-4\">{input}{error}{hint}</div></div>",
                 ],
             ]); ?>
             <?= $form->field($model, 'username') ?>
@@ -46,10 +45,11 @@ LoginAsset::register($this);
             ]) ?>
             <div class="form-group">
                 <div class="col-lg-offset-1 col-lg-11">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton('登陆', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
             </div>
             <?php ActiveForm::end(); ?>
+
         </div>
     </div>
     <?php $this->endBody() ?>
