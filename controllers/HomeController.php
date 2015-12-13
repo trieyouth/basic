@@ -18,6 +18,7 @@ class HomeController extends Controller
     public function actionIndex()
     {
         IntentUtil::sendParams('youth','@web/img/welcome.png');
+        echo 'df';
         return $this->render('index');
     }
 
