@@ -6,7 +6,6 @@
  * Time: 上午10:02
  */
 use app\assets\AppAsset;
-use app\assets\ImgAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
@@ -27,7 +26,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 <div style="position: relative; overflow: hidden; height: 100%">
     <div class="top">
-        <img src="<?php echo Url::to('@web/img/menu.png', true) ?>" height="35" class="menu_btn" align="left"/>
+        <img src="<?php echo Url::to('@web/img/menu.png', true) ?>" class="menu_btn" align="left"/>
         <font style="padding-left: 10px;">控制台</font>
     </div>
     <div class="container" style="overflow-y:auto;height: 100%;width: 100%">

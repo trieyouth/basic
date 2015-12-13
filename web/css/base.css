@@ -13,17 +13,6 @@
     left: -570px;
 }
 
-.top {
-    background-color: #696969;
-    top: 0px;
-    width: 100%;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 400;
-    padding-left: 10px;
-    text-align: left;
-}
-
 #grey_back {
     display: none;
     background-color: #000000;
@@ -46,20 +35,17 @@
 .menu-item:hover {
     background: #f7f7f7;
 
+}
 
-
-}@media (min-width: 240px) {
-     .top {
-        height: 70px;
-        line-height: 70px;
-    }
+@media (min-width: 240px) {
 
     #menu_left {
         width: 180px;
     }
 
     .menu_btn {
-        margin-top: 16px;
+        margin-top: 4px;
+        height: 20px;
     }
 
     .background_profile {
@@ -79,21 +65,20 @@
         margin-top: -50px;
         margin-left: 140px;
         margin-bottom: 40px;
-    }  　　
+    }
+
+    　　
 }
 
 @media (min-width: 360px) {
-     .top {
-        height: 70px;
-        line-height: 70px;
-    }
 
     #menu_left {
         width: 280px;
     }
 
     .menu_btn {
-        margin-top: 16px;
+        margin-top: 4px;
+        height: 24px;
     }
 
     .background_profile {
@@ -113,22 +98,21 @@
         margin-top: -50px;
         margin-left: 140px;
         margin-bottom: 40px;
-    }  　　
+    }
+
+    　　
 }
 
 @media (min-width: 480px) {
 
-    .top {
-        height: 70px;
-        line-height: 70px;
-    }
 
     #menu_left {
         width: 380px;
     }
 
     .menu_btn {
-        margin-top: 16px;
+        margin-top: 4px;
+        height: 28px;
     }
 
     .background_profile {
@@ -154,17 +138,15 @@
 }
 
 @media (min-width: 768px) {
-    .top {
-        height: 70px;
-        line-height: 70px;
-    }
+
 
     #menu_left {
         width: 520px;
     }
 
     .menu_btn {
-        margin-top: 16px;
+        margin-top: 6px;
+        height: 28px;
     }
 
     .background_profile {
@@ -190,10 +172,6 @@
 }
 
 @media (min-width: 1280px) {
-    .top {
-        height: 70px;
-        line-height: 70px;
-    }
 
     #menu_left {
         left: -570px;
@@ -214,7 +192,8 @@
     /*box-shadow: 0 0 2px #999999;*/
     /*}*/
     .menu_btn {
-        margin-top: 16px;
+        margin-top: 8px;
+        height: 32px
     }
 
     .background_profile {
