@@ -49,6 +49,7 @@ class LoginController extends Controller
 
     public function actionIndex()
     {
+        echo 'index';
         return $this->render('index');
     }
 
