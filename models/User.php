@@ -2,16 +2,12 @@
 
 namespace app\models;
 
+use yii\base\Object;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
 {
-    public $id;
-    public $name;
-    public $pwd;
-    public $authKey;
-    public $token;
 
     public static function tableName()
     {
@@ -23,12 +19,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        $user = static::findOne($id);
-        if($user != null) {
-            echo $user->token."ddddd".$user->name."nnnnn";
-        }else{
-            echo 'user is null';
-        }
+        $user = User::findOne($id);
         return $user;
     }
 
@@ -38,18 +29,18 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['token'=>$token]);
+        return static::findOne(['token' => $token]);
     }
 
     /**
      * Finds user by username
      *
-     * @param  string      $username
+     * @param  string $username
      * @return static|null
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['name'=>$username]);
+        return static::findOne(['name' => $username]);
     }
 
     /**
@@ -65,7 +56,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->authKey;
+        return $this->auth_key;
     }
 
     /**
@@ -73,21 +64,17 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        return $this->auth_key === $authKey;
     }
 
     /**
      * Validates password
      *
-     * @param  string  $password password to validate
+     * @param  string $password password to validate
      * @return boolean if password provided is valid for current user
      */
     public function validatePassword($password)
     {
-        $user = $this->find();
-        foreach ($user->all() as $u){
-            echo $u->id.'ccccc';
-        }
         return $this->pwd === $password;
     }
 }

@@ -27,10 +27,10 @@ class LoginForm extends Model
             [['username', 'password'], 'required','message'=>'不能为空'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
-            ['password', 'validatePassword','message'=>'密码或用户名错误'],
             ['username','email','message'=>'用户名格式不正确'],
             ['password','string','max'=>18, 'min'=>6, 'tooLong'=>'密码请输入长度为6-18位字符', 'tooShort'=>'密码请输入长度为6-18位字符'],
+            // password is validated by validatePassword()
+            ['password', 'validatePassword','message'=>'密码或用户名错误'],
         ];
     }
 
@@ -46,11 +46,6 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            if($user){
-                echo $user->id;
-            }else{
-                echo 'no user';
-            }
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, '用户名或密码错误');
             }
