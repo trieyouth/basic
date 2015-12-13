@@ -8,7 +8,7 @@ use yii\base\Model;
 
 class SignupForm extends Model
 {
-    public $username;
+    public $id;
     public $pwd;
     public $pwd2;
     public $real_name;
@@ -16,9 +16,7 @@ class SignupForm extends Model
     public $passport;
     public $avatar;
     public $add;
-
-    private $_user = false;
-
+    public $_user;
 
     /**
      * @return array the validation rules.
@@ -26,8 +24,9 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            [['username', 'password','passport','add','id_card','real_name' ], 'required','message'=>'请输入完整的信息'],
-            ['username','email','用户名必须是邮箱格式'],
+            [['id', 'password','passport','add','id_card','real_name' ], 'required','message'=>'请输入完整的信息'],
+            ['id','email','用户名必须是邮箱格式'],
+            ['id','validateId','message'=>'该用户已存在'],
 			['pwd','string','length','min'=>6,'max'=>18,'message'=>'密码长度不合适'],
 			['pwd2','compare','compareAttribute'=>'pwd','message'=>'两次输入密码不一样'],
 			['real_name','string','length','min'=>2,'max'=>4,'message'=>'请输入正确姓名'],
@@ -38,48 +37,22 @@ class SignupForm extends Model
         ];
     }
 
-    /**
-     * Validates the password.
-     * This method serves as the inline validation for password.
-     *
-     * @param string $attribute the attribute currently being validated
-     * @param array $params the additional name-value pairs given in the rule
-     */
-
-    public function validatePassword($attribute, $params)
-    {
-        if (!$this->hasErrors()) {
-            $user = $this->getUser();
-
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+    public function validateId(){
+        if(!$this->hasErrors()){
+            if(isset($id)){
+                if($this->getUser() != false){
+                    $this->addError($id,'该邮箱已注册');
+                }
             }
         }
     }
 
-    /**
-     * Logs in a user using the provided username and password.
-     * @return boolean whether the user is logged in successfully
-     */
-    public function login()
-    {
-        if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
-        }
-        return false;
-    }
-
-    /**
-     * Finds user by [[username]]
-     *
-     * @return User|null
-     */
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+            $this->_user = User::findIdentity($this->id);
         }
-
         return $this->_user;
     }
+
 }

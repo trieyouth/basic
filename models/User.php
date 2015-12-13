@@ -7,12 +7,6 @@ use yii\web\IdentityInterface;
 
 class User extends ActiveRecord implements IdentityInterface
 {
-    public $id;
-    public $name;
-    public $pwd;
-    public $authKey;
-    public $token;
-
     public static function tableName()
     {
         return 'store';
@@ -24,10 +18,9 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentity($id)//在当前表中寻找当前$id 默认在主键
     {
         $user = static::findOne($id);
-        if($user != null) {
-            echo $user->token."ddddd".$user->name."nnnnn";
+        if($user === null) {
+
         }else{
-            echo 'user is null';
         }
         return $user;
     }
@@ -85,9 +78,6 @@ class User extends ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {
         $user = $this->find();
-        foreach ($user->all() as $u){
-            echo $u->id.'ccccc';
-        }
         return $this->pwd === $password;
     }
 }
