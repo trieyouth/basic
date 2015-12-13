@@ -55,9 +55,6 @@ class LoginController extends Controller
     public function actionLogin()
     {
 
-        
-
-
     }
 
     public function actionLogout()
