@@ -15,7 +15,8 @@ class LoginAsset extends AssetBundle{
     public $baseUrl = '@web';
 
     public $css = [
-        'css/common.css'
+        'css/common.css',
+        'css/login.css',
     ];
     public $js = [
 
