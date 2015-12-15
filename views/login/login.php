@@ -35,12 +35,12 @@ LoginAsset::register($this);
                 <?= $form->field($model, 'username',
                     ['options' => ['class' => 'form-group'],
                         'labelOptions' => ['label' => '用户名', 'class' => 'col-sm-2 control-label'],
-                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
                     ->textInput(['options' => 'form-control']) ?>
                 <?= $form->field($model, 'password',
                     ['options' => ['class' => 'form-group'],
                         'labelOptions' => ['label' => '密码', 'class' => 'col-sm-2 control-label'],
-                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
                     ->passwordInput(['options' => 'form-control']) ?>
 
 

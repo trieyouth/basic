@@ -10,8 +10,10 @@ use yii\base\Controller;
 
 class CommonController extends Controller{
 
-    public function  actionError(){
+     public $layout = false;
 
+    public function  actionError(){
+        return $this->render("error_404");
     }
 
 }
