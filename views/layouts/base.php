@@ -5,12 +5,12 @@
  * Date: 15-12-11
  * Time: 上午10:02
  */
-use app\assets\AppAsset;
+use app\assets\LayoutAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
-AppAsset::register($this);
+LayoutAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -24,45 +24,40 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div style="position: relative; overflow: hidden; height: 100%">
-    <div class="top">
-        <img src="<?php echo Url::to('@web/img/menu.png', true) ?>" class="menu_btn" align="left"/>
-        <font style="padding-left: 10px;">控制台</font>
-    </div>
-    <div class="container" style="overflow-y:auto;height: 100%;width: 100%">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
-    </div>
-    <div id="grey_back">
-        &nbsp;</div>
-    <div id="menu_left" class="menu_mobile_app" align="left" style="overflow-y:auto">
-        <div class="background_profile" style="background-image: url(<?php echo $this->params['back'] ?>)">
+<header class="navbar clearfix">
+    <div class="container">
+        <div id="sidebar-collapse" class="sidebar-collapse btn">
+            <img class="fa fa-bars" src="<?php echo Url::to('@web/img/menu.png') ?>" height="24"/>
         </div>
-        <div class="head_profile" style="background-image: url(<?php echo $this->params['head'] ?>)">
+        <div class="navbar-brand">
+            <a href="<?php echo Url::to('index.php?r=home/index') ?>">
+                <img src="<?php echo Url::to('@web/img/logo.png') ?>" class="img-responsive" height="30" width="120">
+            </a>
         </div>
-        <div class="name_profile"><?php echo $this->params['name'] ?></div>
-        <a href="#">
-            <div class="menu-item">
-                <img src="<?php echo Url::to('@web/img/menu.png', true) ?>" style="height: 36px;margin-left: 16px"/>
-                <font style="margin-left: 16px">app申请</font>
-            </div>
-        </a>
-        <a href="#">
-            <div class="menu-item">
-                <img src="<?php echo Url::to('@web/img/menu.png', true) ?>" style="height: 36px;margin-left: 16px"/>
-                <font style="margin-left: 16px">菜单管理</font>
-            </div>
-        </a>
-        <a href="#">
-            <div class="menu-item">
-                <img src="<?php echo Url::to('@web/img/menu.png', true) ?>" style="height: 36px;margin-left: 16px"/>
-                <font style="margin-left: 16px">账单</font>
-            </div>
-        </a>
     </div>
-</div>
+</header>
+<section id="page">
+    <div id='sidebar' class="kv-sidebar">
+        <div id="null" class="sidebar-menu nav-collapse">
+            <div class="divide-20"></div>
+            <div id="search-bar">
+                <input class="search" placeholder="Search" type="text"><i class=""></i>
+            </div>
+            <ul class="list-unstyled">
+                <li>
+                    <a class="" href="frontend_theme/index.html" target="_blank">
+                        <i class="fa fa-desktop fa-fw">
+                        </i>
+                <span class="menu-text">
+                    Frontend Theme
+                </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
 <?php $this->endBody() ?>
 </body>
 </html>

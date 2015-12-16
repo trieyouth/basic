@@ -51,3 +51,12 @@
         font-weight: 400;
     }
 }
+
+.divide-40 {
+    height: 40px;
+    width: 100%;
+}
+.divide-20 {
+    height: 20px;
+    width: 100%;
+}
