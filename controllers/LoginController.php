@@ -70,7 +70,6 @@ class LoginController extends Controller
                 'model' => $login,
             ]);
         }
-
     }
 
     public function actionLogout()

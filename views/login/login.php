@@ -9,6 +9,8 @@
 use app\assets\LoginAsset;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
+
 LoginAsset::register($this);
 ?>
 
@@ -22,34 +24,46 @@ LoginAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body>
+    <body class="login"
+          style="">
     <?php $this->beginBody() ?>
-    <div class="wrap" style="TEXT-ALIGN: center;">
-        <div class="top" style="TEXT-ALIGN: center;">
-            <font>登陆</font>
-        </div>
-        <div>
-            <?php $form = ActiveForm::begin([
-                'id' => 'login-form',
-                'options' => ['class' => 'form-horizontal'],
-                'fieldConfig' => [
-                    'template' => "{label}<div class=\"row\"><div class=\"col-sm-4\">{input}{error}{hint}</div></div>",
-                ],
-            ]); ?>
-            <?= $form->field($model, 'username') ?>
+    <div class="container text-center">
+        <div class="row login-row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="text-left content login-content">
+                    <h2 class="bigintro">登陆</h2>
 
-            <?= $form->field($model, 'password')->passwordInput() ?>
+                    <div class="divide-40"></div>
+                    <?php $form = ActiveForm::begin(['options' => [
+                        'class' => 'form-horizontal text-left'
+                    ]]); ?>
+                    <?= $form->field($model, 'username',
+                        ['options' => ['class' => 'form-group'],
+                            'labelOptions' => ['label' => '用户名', 'class' => 'col-sm-2 control-label'],
+                            'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
+                        ->textInput(['options' => 'form-control']) ?>
+                    <?= $form->field($model, 'password',
+                        ['options' => ['class' => 'form-group'],
+                            'labelOptions' => ['label' => '密码', 'class' => 'col-sm-2 control-label'],
+                            'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
+                        ->passwordInput(['options' => 'form-control']) ?>
+                    <?= $form->field($model, 'rememberMe', ['options' => ['class' => 'form-group']])->checkbox([
+                        'template' => "<div class=\"col-sm-offset-2 col-sm-10\">{input} 记住我</div></dr><div class=\"col-lg-8\">{error}</div>",
+                    ]) ?>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <?= Html::submitButton('登陆', ['class' => 'btn btn-primary col-lg-10', 'name' => 'login-button']) ?>
+                        </div>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                    <div class="divide-20"></div>
+                    <div class="col-sm-offset-2 login-helpers">
+                        <a href="#">忘记密码?</a> <br>
+                        没有账号？ <a href="#">立即注册</a>
+                    </div>
 
-            <?= $form->field($model, 'rememberMe')->checkbox([
-                'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            ]) ?>
-            <div class="form-group">
-                <div class="col-lg-offset-1 col-lg-11">
-                    <?= Html::submitButton('登陆', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
             </div>
-            <?php ActiveForm::end(); ?>
-
         </div>
     </div>
     <?php $this->endBody() ?>
