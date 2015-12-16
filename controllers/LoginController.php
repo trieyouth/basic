@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 use app\models\LoginForm;
+use app\models\User;
 use Yii;
 use yii\base\Controller;
 use yii\filters\AccessControl;
@@ -25,10 +26,10 @@ class LoginController extends Controller
                 'class' => AccessControl::className(),
                 'only' => ['login', 'logout', 'signup'],
                 'denyCallback' => function ($rule, $action) {
-                    if(strcmp($action->id,'logout')==0){
+                    if (strcmp($action->id, 'logout') == 0) {
                         throw new \Exception('您还没有登陆');
                     }
-                    if(strcmp($action->id,'login')==0 || strcmp($action->id,'signup')==0){
+                    if (strcmp($action->id, 'login') == 0 || strcmp($action->id, 'signup') == 0) {
                         throw new \Exception('您已经登陆');
                     }
                 },
@@ -55,27 +56,26 @@ class LoginController extends Controller
 
     public function actionLogin()
     {
-        if(!Yii::$app->user->isGuest){//看是否已经登陆
-            return Yii::$app->response->redirect(['home/index']);//controller之间的调用
+
+        if (!Yii::$app->user->isGuest) {
+            return Yii::$app->response->redirect(['home/index']);
         }
 
         $login = new LoginForm();
 
-        if($login->load(Yii::$app->request->post()) && $login->validate()){
+        if ($login->load(Yii::$app->request->post()) && $login->login()) {
             return Yii::$app->response->redirect(['home/index']);
-        }else{
-            return $this->render('login',[
-            'model' => $login,
-        ]);
+        } else {
+            return $this->render('login', [
+                'model' => $login,
+            ]);
         }
 
     }
 
     public function actionLogout()
     {
-        if(YII::$app->user->isGuest){
 
-        }
     }
 
     public function actionSignUp()
