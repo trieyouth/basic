@@ -53,7 +53,6 @@ ErrorAsset::register($this)
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
     <?php $this->endBody() ?>

@@ -24,7 +24,7 @@ LoginAsset::register($this);
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body style="background: url('<?php echo Url::to("@web/img/5.jpg")?>')">
+    <body style="background: url('<?php echo Url::to("@web/img/login-background.jpg")?>')">
     <?php $this->beginBody() ?>
     <div class="wrap">
         <div style="margin:0 auto ;margin-top:8%;box-shadow: 0 0 2px #999999;width: 68%;padding-top: 6%;padding-bottom: 6%">
