@@ -29,41 +29,55 @@ LoginAsset::register($this);
     <div class="row login-row">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="text-left content login-content">
-                <h2 class="bigintro">登陆</h2>
+                <h2 class="bigintro">注册</h2>
                 <div class="divide-40"></div>
                 <?php $form = ActiveForm::begin(['options' => [
                     'class' => 'form-horizontal text-left'
                 ]]); ?>
                 <?= $form->field($model, 'id',
                     ['options' => ['class' => 'form-group'],
-                        'labelOptions' => ['label' => '邮箱', 'class' => 'col-sm-2 control-label'],
-                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
+                        'labelOptions' => ['label' => '邮箱', 'class' => 'col-sm-3 control-label'],
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
+                    ->textInput(['options' => 'form-control']) ?>
+                <?= $form->field($model, 'real_name',
+                    ['options' => ['class' => 'form-group'],
+                        'labelOptions' => ['label' => '餐厅名称', 'class' => 'col-sm-3 control-label'],
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
                     ->textInput(['options' => 'form-control']) ?>
                 <?= $form->field($model, 'pwd',
                     ['options' => ['class' => 'form-group'],
-                        'labelOptions' => ['label' => '密码', 'class' => 'col-sm-2 control-label'],
-                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
+                        'labelOptions' => ['label' => '密码', 'class' => 'col-sm-3 control-label'],
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
                     ->passwordInput(['options' => 'form-control']) ?>
                 <?= $form->field($model, 'pwd2',
                     ['options' => ['class' => 'form-group'],
-                        'labelOptions' => ['label' => '重复密码', 'class' => 'col-sm-2 control-label'],
-                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
+                        'labelOptions' => ['label' => '确认密码', 'class' => 'col-sm-3 control-label'],
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
                     ->passwordInput(['options' => 'form-control']) ?>
-                <?= $form->field($model, 'real_name',
+                <?= $form->field($model, 'add',
                     ['options' => ['class' => 'form-group'],
-                        'labelOptions' => ['label' => '重复密码', 'class' => 'col-sm-2 control-label'],
-                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
-                    ->passwordInput(['options' => 'form-control']) ?>
+                        'labelOptions' => ['label' => '餐厅地址', 'class' => 'col-sm-3 control-label'],
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
+                    ->textInput(['options' => 'form-control']) ?>
+                <?= $form->field($model, 'passport',
+                    ['options' => ['class' => 'form-group'],
+                        'labelOptions' => ['label' => '营业许可证', 'class' => 'col-sm-3 control-label'],
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
+                    ->textInput(['options' => 'form-control']) ?>
+                <?= $form->field($model, 'id_card',
+                    ['options' => ['class' => 'form-group'],
+                        'labelOptions' => ['label' => '身份证号', 'class' => 'col-sm-3 control-label'],
+                        'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-1 col-sm-10">{error}</div>'])
+                    ->textInput(['options' => 'form-control']) ?>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <?= Html::submitButton('登陆', ['class' => 'btn btn-primary col-lg-10', 'name' => 'login-button']) ?>
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <?= Html::submitButton('注册', ['class' => 'btn btn-primary col-lg-10', 'name' => 'signup-button']) ?>
                     </div>
                 </div>
                 <?php ActiveForm::end(); ?>
                 <div class="divide-20"></div>
-                <div class="col-sm-offset-2 login-helpers">
-                    <a href="#">忘记密码?</a> <br>
-                    没有账号？ <a href="#">立即注册</a>
+                <div class="col-sm-offset-1 login-helpers">
+                    <a href="<?php echo Url::to('index.php?r=login/login')?>">返回登陆</a> <br>
                 </div>
 
             </div>

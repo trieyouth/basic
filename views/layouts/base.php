@@ -5,12 +5,14 @@
  * Date: 15-12-11
  * Time: 上午10:02
  */
+use app\assets\FontAsset;
 use app\assets\LayoutAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
 LayoutAsset::register($this);
+FontAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -37,21 +39,69 @@ LayoutAsset::register($this);
     </div>
 </header>
 <section id="page">
-    <div id='sidebar' class="kv-sidebar">
+    <div id='sidebar' class="sidebar">
         <div id="null" class="sidebar-menu nav-collapse">
             <div class="divide-20"></div>
             <div id="search-bar">
-                <input class="search" placeholder="Search" type="text"><i class=""></i>
+                <input class="search" placeholder="Search" type="text"><i class="fa fa-search search-icon"></i>
             </div>
+            <div class="divide-20"></div>
             <ul class="list-unstyled">
-                <li>
-                    <a class="" href="frontend_theme/index.html" target="_blank">
-                        <i class="fa fa-desktop fa-fw">
-                        </i>
-                <span class="menu-text">
-                    Frontend Theme
-                </span>
-                    </a>
+                <li class="active">
+                    <div class="layout-menu-item text-left">
+                        <a class="text-muted" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <span class="selected"></span>
+                        </a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="layout-menu-item text-left">
+                        <a class="text-muted" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <span class="selected"></span>
+                        </a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="layout-menu-item text-left">
+                        <a class="text-muted" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <span class="selected"></span>
+                        </a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="layout-menu-item text-left">
+                        <a class="text-muted" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <span class="selected"></span>
+                        </a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="layout-menu-item text-left">
+                        <a class="text-muted" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <span class="selected"></span>
+                        </a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="layout-menu-item text-left">
+                        <a class="text-muted" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <span class="selected"></span>
+                        </a>
+                    </div>
+                </li>
+                <li class="active">
+                    <div class="layout-menu-item text-left">
+                        <a class="text-muted" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <span class="selected"></span>
+                        </a>
+                    </div>
                 </li>
             </ul>
         </div>

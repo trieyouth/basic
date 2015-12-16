@@ -1,3 +1,10 @@
+* {
+    outline: medium none !important;
+    outline-width: medium;
+    outline-style: none;
+    outline-color: -moz-use-text-color;
+}
+
 .navbar {
     background: #5E87B0 none repeat scroll 0px 0px;
     border: medium none;
@@ -17,7 +24,7 @@
     width: 100%;
 }
 
-.sidebar-collapse, .switcher {
+.sidebar-collapse{
     position: absolute;
     top: 10px;
     left: 10px;
@@ -36,22 +43,6 @@
     float: right;
 }
 
-.fa {
-    display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-}
-
-* {
-    outline: medium none !important;
-}
-
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 #sidebar {
     background: #F4F4F4 none repeat scroll 0px 0px;
     padding: 0px !important;
@@ -62,14 +53,6 @@
 
 #sidebar * {
     text-overflow: ellipsis;
-}
-
-* {
-    outline: medium none !important;
-}
-
-*, *::before, *::after {
-    box-sizing: border-box;
 }
 
 #search-bar {
@@ -88,4 +71,30 @@
     width: 90%;
     margin: 0px auto 10px;
     padding-right: 30px !important;
+}
+
+.search-icon {
+    display: block;
+    font-size: 14px;
+    line-height: 1;
+    position: absolute;
+    right: 22px;
+    top: 29px;
+    color: #888;
+}
+
+.font-icon {
+    margin-left: 16px;
+    margin-right: 16px;
+    font-size: 2em;
+}
+
+.layout-menu-item{
+    height: 48px;
+    line-height: 48px;
+}
+
+.layout-menu-item:hover{
+    box-shadow: 1px 1px 1px #d0d0d0;
+    background: #ffffff;
 }

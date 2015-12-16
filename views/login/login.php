@@ -59,7 +59,7 @@ LoginAsset::register($this);
                     <div class="divide-20"></div>
                     <div class="col-sm-offset-2 login-helpers">
                         <a href="#">忘记密码?</a> <br>
-                        没有账号？ <a href="#">立即注册</a>
+                        没有账号？ <a href="<?php echo Url::to('index.php?r=login/signup')?>">立即注册</a>
                     </div>
 
                 </div>

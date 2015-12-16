@@ -19,7 +19,6 @@ class LoginController extends Controller
 
     public $layout = false;
 
-
     public function behaviors()//行为验证 是登陆状态还是登出状态 要有什么操作
     {
         return [
@@ -79,18 +78,16 @@ class LoginController extends Controller
         $this->redirect(['login/login']);//跳转的页面
     }
 
-    public function actionSignUp()
+    public function actionSignup()
     {
-        if (!Yii::$app->user->isGuest) {
-            return Yii::$app->response->redirect(['']);
-        }
-
         $register = new SignupForm();
 
         if($register->load(YII::$app->request->post()) && $register->signup()){
             return YII::$app->response->redirect(['login/login']);
         }else{
-            return '注册失败';
+            return $this->render('signup', [
+                'model' => $register,
+            ]);
         }
     }
 

@@ -5,7 +5,6 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
-
 class SignupForm extends Model
 {
     public $id;
@@ -16,7 +15,7 @@ class SignupForm extends Model
     public $passport;
     public $avatar;
     public $add;
-    public $_user;
+    public $_user = false;
 
     /**
      * @return array the validation rules.
@@ -24,16 +23,13 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            [['id', 'password','passport','add','id_card','real_name' ], 'required','message'=>'请输入完整的信息'],
-            ['id','email','用户名必须是邮箱格式'],
+            [['id', 'pwd','pwd2','passport','add','id_card','real_name' ], 'required','message'=>'请输入完整的信息'],
+            ['id','email','message'=>'邮箱格式不正确'],
             ['id','validateId','message'=>'该用户已存在'],
-			['pwd','string','length','min'=>6,'max'=>18,'message'=>'密码长度不合适'],
+			['pwd','string','max'=>18, 'min'=>6, 'tooLong'=>'密码请输入长度为6-18位字符', 'tooShort'=>'密码请输入长度为6-18位字符'],
 			['pwd2','compare','compareAttribute'=>'pwd','message'=>'两次输入密码不一样'],
-			['real_name','string','length','min'=>2,'max'=>4,'message'=>'请输入正确姓名'],
+			['real_name','string','min'=>2,'max'=>4,'message'=>'请输入正确姓名'],
 			['add','string','max'=>255],
-			['birth','match','pattern'=>'%^\d{4}(\-|\/|\.)\d{1,2}\1\d{1,2}$%',
-			    'allowEmpty'=>true, 'message'=>'生日必须是年-月-日格式'],
-			['gender','boolean'],
         ];
     }
 
@@ -64,7 +60,7 @@ class SignupForm extends Model
             $user->name = $this->real_name;
             $user->id_card = $this->id_card;
             $user->address = $this->add;
-            $user->postport = $this->passport;
+            $user->passport = $this->passport;
             $user->avatar = $this->avatar;
             $user->save();
         }
