@@ -10,13 +10,36 @@ namespace app\controllers;
 use app\util\IntentUtil;
 use Yii;
 use yii\base\Controller;
+use yii\filters\AccessControl;
 
 class HomeController extends Controller
 {
-    public $layout = "@app/views/layouts/base.php";
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => [],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
 
     public function actionIndex()
     {
+        $this->layout = "@app/views/layouts/base.php";
         IntentUtil::sendParams('youth','@web/img/welcome.png');
         return $this->render('index');
     }

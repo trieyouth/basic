@@ -1,24 +1,21 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * Created by PhpStorm.
+ * User: youth
+ * Date: 15-12-13
+ * Time: 下午6:47
  */
-
 namespace app\assets;
 
 use yii\web\AssetBundle;
 
-/**
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
-class AppAsset extends AssetBundle
-{
+class LoginAsset extends AssetBundle{
+
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $css = [
 
+    public $css = [
+        'css/login.css',
     ];
     public $js = [
 
@@ -29,4 +26,5 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
+
 }

@@ -19,7 +19,7 @@ class IntentUtil extends Object{
             throw new \Exception("util IntentUtil sendParams方法的head参数不可以是空");
         }
         $view = \Yii::$app->view;
-        $view->params['name']=$name;
+        $view->params['name']=\Yii::$app->user->getId().'ddddd';
         $view->params['head']=Url::to($head,true);
         $view->params['back']=Url::to('@web/img/fond.png',true);
     }
