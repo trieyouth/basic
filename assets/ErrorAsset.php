@@ -14,7 +14,8 @@ class ErrorAsset extends \yii\web\AssetBundle{
 
     public $css = [
         'css/error.css',
-        'css/font-awesome.min.css'
+        'css/cloud-admin.css',
+        'css/font-awesome.min.css',
     ];
     public $js = [
 
