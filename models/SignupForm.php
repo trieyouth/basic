@@ -37,6 +37,7 @@ class SignupForm extends Model
         ];
     }
 
+    //检验账号有没有被注册过
     public function validateId(){
         if(!$this->hasErrors()){
             if(isset($id)){
@@ -55,4 +56,18 @@ class SignupForm extends Model
         return $this->_user;
     }
 
+    public function signup(){
+        if($this->validate()){
+            $user = new User;
+            $user->id = $this->id;
+            $user->pwd = $this->pwd;
+            $user->name = $this->real_name;
+            $user->id_card = $this->id_card;
+            $user->address = $this->add;
+            $user->postport = $this->passport;
+            $user->avatar = $this->avatar;
+            $user->save();
+        }
+        return false;
+    }
 }
