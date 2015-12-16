@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 use app\models\LoginForm;
+use app\models\SignupForm;
 use app\models\User;
 use Yii;
 use yii\base\Controller;
@@ -68,18 +69,29 @@ class LoginController extends Controller
         } else {
             return $this->render('login', [
                 'model' => $login,
-            ]);
+            ]);//登陆失败就渲染布局
         }
     }
 
     public function actionLogout()
     {
-
+        Yii::app()->user->logout();
+        $this->redirect(['login/login']);//跳转的页面
     }
 
     public function actionSignUp()
     {
+        if (!Yii::$app->user->isGuest) {
+            return Yii::$app->response->redirect(['']);
+        }
 
+        $register = new SignupForm();
+
+        if($register->load(YII::$app->request->post()) && $register->signup()){
+            return YII::$app->response->redirect(['login/login']);
+        }else{
+            return '注册失败';
+        }
     }
 
 }
