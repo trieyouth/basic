@@ -2,20 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: youth
- * Date: 15-12-13
- * Time: 下午6:47
+ * Date: 15-12-16
+ * Time: 下午1:19
  */
 namespace app\assets;
 
-use yii\web\AssetBundle;
+class ErrorAsset extends \yii\web\AssetBundle{
 
-class LoginAsset extends AssetBundle{
-
-    public $basePath = '@webroot';
+     public $basePath = '@webroot';
     public $baseUrl = '@web';
 
     public $css = [
-        'css/login.css',
+        'css/error.css',
+        'css/font-awesome.min.css'
     ];
     public $js = [
 
@@ -26,5 +25,4 @@ class LoginAsset extends AssetBundle{
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
-
 }

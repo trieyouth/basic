@@ -5,11 +5,11 @@
  * Date: 15-12-15
  * Time: 下午9:29
  */
-use app\assets\AppAsset;
+use app\assets\ErrorAsset;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-AppAsset::register($this)
+ErrorAsset::register($this)
 ?>
 <?php $this->beginPage() ?>
     <!DOCTYPE html>
@@ -20,42 +20,40 @@ AppAsset::register($this)
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
+        <link href="http://fonts.useso.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
     </head>
-    <body style="background: url('<?php echo Url::to("@web/img/error_background.jpg") ?>')">
+    <body>
     <?php $this->beginBody() ?>
-    <div class="wrap">
+    <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <div class="divide-100"></div>
             </div>
         </div>
         <div class="row">
-            <div class="container">
-                <div class="col-md-12 not-found">
-                    <div class="error">
-                        404
-                    </div>
-                </div>
-                <div class="col-md-5 not-found">
-                    <div class="content">
-                        <h3>Are you lost in the wild?</h3>
-
-                        <p>
-                            Sorry, but the page you're looking for has not been found<br/>
-                            Try checking the URL for errors, <a href="<?php echo Url::to("/basic/web/index.php?r=login/login",true)?>">goto home</a> or try to search below.
-                        </p>
-
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="search here...">
-							<span class="input-group-btn">
-								<button type="submit" class="btn btn-danger"><i class="fa fa-search"></i></button>
-							</span>
-                            </div>
-                        </form>
-                    </div>
+            <div class="col-sm-4 col-sm-offset-3">
+                <div class="error">
+                    404
                 </div>
             </div>
+            <div class="col-sm-4 col-sm-offset-3 text-left">
+                <div class="content">
+                    <h3>迷失荒野了吗？</h3>
+                    <p>
+                        您访问的页面发生错误<br/>
+                        请查看你的网址是否有误, <a
+                            href="<?php echo Url::to("/basic/web/index.php?r=login/login", true) ?>">返回主页</a>
+                </div>
+                <form action="#">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="search here..." type="text">
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+							</span>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
     <?php $this->endBody() ?>

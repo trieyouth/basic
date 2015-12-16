@@ -42,8 +42,6 @@ LoginAsset::register($this);
                         'labelOptions' => ['label' => '密码', 'class' => 'col-sm-2 control-label'],
                         'template' => '{label}<div class="col-lg-8">{input}</div></dr><div class="col-sm-offset-2 col-sm-10">{error}</div>'])
                     ->passwordInput(['options' => 'form-control']) ?>
-
-
                 <?= $form->field($model, 'rememberMe', ['options' => ['class' => 'form-group']])->checkbox([
                     'template' => "<div class=\"col-sm-offset-2 col-sm-10\">{input} 记住我</div></dr><div class=\"col-lg-8\">{error}</div>",
                 ]) ?>
