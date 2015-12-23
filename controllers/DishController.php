@@ -24,7 +24,7 @@ class DishController extends Controller{
 
         $dish = new Dish();
         $res = Yii::$app->request;
-        $dish->s_id = '1@qq.com';
+        $dish->s_id = Yii::$app->user->id;
         $dish->dish_name = $res->post('dish_name');
         $dish->price = $res->post('price');
         $dish->discount = $res->post('discount');
@@ -55,7 +55,6 @@ class DishController extends Controller{
 
         $id = Yii::$app->request->post('dish_id');
         $res = Yii::$app->request;
-        $dish = new Dish();
         $dish = Dish::findOne($id);
         $dish->dish_name = $res->post('dish_name');
         $dish->price = $res->post('price');
