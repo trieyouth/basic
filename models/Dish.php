@@ -2,16 +2,13 @@
 
 namespace app\models;
 
-
-
 use yii\db\ActiveRecord;
 
-class Dishes extends ActiveRecord
+
+class Dish extends ActiveRecord
 {
-    /**
-     * @return string
-     */
-    public function tableName()
+
+    public static function tableName()
     {
         return 'dish';
     }
@@ -19,33 +16,16 @@ class Dishes extends ActiveRecord
     public function rules()
     {
         return [
-            [['dish_name', 'price'], 'require'],
-            ['dish_name', 'length', 'max' => 10],
+            [['dish_name', 'price'], 'required'],
+            ['dish_name','string','max'=>18, 'min'=>2],
+            ['s_id','email'],
+            ['price','integer'],
+            ['discount','double','max'=>1],
+            ['advice','string','max'=>100],
+            ['desc','string','max'=>200],
+            ['p_id','string','max'=>36],
         ];
     }
 
-    /**
-     * 还要获取当前id
-     */
-    public function add()
-    {
-
-        if ($this->validate()) {
-            $this->save();
-        }
-    }
-
-    /**
-     *修改 传入菜品id还有需要修改的信息
-     */
-    public function update()
-    {
-
-        $dishes = new Dishes();
-        if ($dishes->load(YII::$app->request->post()) && $dishes->validate()) {
-            $dishes->save();
-        }
-
-    }
 
 }
