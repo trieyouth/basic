@@ -49,6 +49,7 @@
     width: 250px;
     position: absolute;
     border-bottom: 1px solid #E7E7E7;
+    margin-left: -250px;
 }
 
 #sidebar * {
@@ -97,4 +98,18 @@
 .layout-menu-item:hover{
     box-shadow: 1px 1px 1px #d0d0d0;
     background: #ffffff;
+}
+
+.layout-menu-active{
+    box-shadow: 1px 1px 1px #d0d0d0;
+    background: #ffffff;
+}
+
+@media  (min-width: 768px){
+    #sidebar{
+        margin-left: 0;
+    }
+    #content{
+        padding-left: 250px;
+    }
 }

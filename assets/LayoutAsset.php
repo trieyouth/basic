@@ -17,7 +17,7 @@ class LayoutAsset extends AssetBundle{
         'css/common.css'
     ];
     public $js = [
-
+        'js/layout.js'
     ];
 
     public $depends = [
