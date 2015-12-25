@@ -46,10 +46,9 @@
 #sidebar {
     background: #F4F4F4 none repeat scroll 0px 0px;
     padding: 0px !important;
-    width: 250px;
+    width: 0px;
     position: absolute;
     border-bottom: 1px solid #E7E7E7;
-    margin-left: -250px;
 }
 
 #sidebar * {
@@ -93,6 +92,7 @@
 .layout-menu-item{
     height: 48px;
     line-height: 48px;
+    overflow: hidden
 }
 
 .layout-menu-item:hover{
@@ -107,7 +107,7 @@
 
 @media  (min-width: 768px){
     #sidebar{
-        margin-left: 0;
+        width: 250px;
     }
     #content{
         padding-left: 250px;

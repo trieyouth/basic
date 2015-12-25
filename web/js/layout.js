@@ -14,23 +14,37 @@ $("#sidebar-collapse").click(
         if (isExpand == false) {
             isExpand = true;
             $('#sidebar').animate(
-                {width:250},500,0,function(){
+                {width: 250}, 500, 0, function () {
                     var search_input = document.getElementById("search-input");
                     search_input.placeholder = "Search";
                 }
             );
+            $('#content').animate(
+                {paddingLeft: 250}, 500
+            );
         } else {
             isExpand = false;
-            $('#sidebar').animate(
-                {width:50},500,0,function(){
-                    var search_input = document.getElementById("search-input");
-                    search_input.placeholder = "";
-                    var menu_item_font = document.getElementsByName("");
-                }
-            );
-            $('#content').animate(
-
-            );
+            if (window.screen.width >= 768) {
+                $('#sidebar').animate(
+                    {width: 50}, 500, 0, function () {
+                        var search_input = document.getElementById("search-input");
+                        search_input.placeholder = "";
+                    }
+                );
+                $('#content').animate(
+                    {paddingLeft: 50}, 500
+                );
+            }else{
+                $('#sidebar').animate(
+                    {width: 0}, 500, 0, function () {
+                        var search_input = document.getElementById("search-input");
+                        search_input.placeholder = "";
+                    }
+                );
+                $('#content').animate(
+                    {paddingLeft: 0}, 500
+                );
+            }
         }
     }
 );

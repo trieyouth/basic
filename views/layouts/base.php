@@ -75,7 +75,7 @@ FontAsset::register($this);
                 <li>
                     <div id="layout-menu-item-2" class="layout-menu-item text-left">
                         <a class="text-muted" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text"></span>
                             <span class="selected"></span>
                         </a>
                     </div>
