@@ -9,7 +9,6 @@ namespace app\controllers;
 
 use app\models\LoginForm;
 use app\models\SignupForm;
-use app\models\User;
 use Yii;
 use yii\base\Controller;
 use yii\filters\AccessControl;
@@ -74,8 +73,8 @@ class LoginController extends Controller
 
     public function actionLogout()
     {
-        Yii::app()->user->logout();
-        $this->redirect(['login/login']);//跳转的页面
+        Yii::$app->user->logout();
+        return Yii::$app->response->redirect(['login/login']);//跳转的页面
     }
 
     public function actionSignup()
