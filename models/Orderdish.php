@@ -18,7 +18,7 @@ class Orderdish extends ActiveRecord{
 
     public function rule(){
         return [
-
+            [['o_id','d_id','price','count'],'required'],
         ];
     }
 }

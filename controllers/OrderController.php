@@ -6,7 +6,6 @@ use yii\base\Controller;
 use app\models\Order;
 use app\models\Orderdish;
 use app\models\Dish;
-use app\models\Seat;
 use yii\web\Session;
 
 $session = new Session;
@@ -92,7 +91,8 @@ class OrderController extends Controller
         $order = new Order();
         $res = Yii::$app->request;
         $order->o_id = $this->actionGetoid();
-        $order->s_id = '1@qq.com';
+        //$order->s_id = '1@qq.com';
+        $order->s_id = Yii::$app->user->id;
         $order->seat_id = $res->post('seat_id');
         $order->b_time = date('y-m-d h:i:s', time());
         $order->count = count($_SESSION["dishlist"]);
@@ -149,7 +149,8 @@ class OrderController extends Controller
      */
     public function actionListnforder()
     {
-        $s_id = '1@qq.com';
+        //$s_id = '1@qq.com';
+        $s_id = Yii::$app->user->id;
         $orderList = Order::find()->where(['s_id'=>$s_id,'e_time'=>null])->one()->attributes;
         return json_encode($orderList);
         //使用此函数需要详细菜单时调用actionlishdish()
@@ -161,7 +162,6 @@ class OrderController extends Controller
     public function actionFinishorder()
     {
         $o_id = $_POST['o_id'];
-        $order = new Order();
         $order = Order::findOne($o_id);
         $order->e_time = date('y-m-d h:i:s', time());
         if ($order === null) {
