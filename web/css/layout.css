@@ -1,11 +1,7 @@
-* {
-    outline: medium none !important;
-    outline-width: medium;
-    outline-style: none;
-    outline-color: -moz-use-text-color;
+body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
+    font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
 }
-
-.navbar {
+.base-nav {
     background: #5E87B0 none repeat scroll 0px 0px;
     border: medium none;
     border-radius: 0px;
@@ -16,7 +12,7 @@
     float: left;
     font-size: 18px;
     line-height: 20px;
-    width: 250px;
+    width: 100px;
     padding-left: 60px;
 }
 
@@ -104,6 +100,23 @@
     box-shadow: 1px 1px 1px #d0d0d0;
     background: #ffffff;
 }
+
+.divider {
+    height: 1px;
+    overflow: hidden;
+    background-color: #E5E5E5;
+}
+.user{
+    height:100%;
+    line-height: 48px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.user:hover{
+    background-color: #eeeeee;
+}
+
 
 @media  (min-width: 768px){
     #sidebar{

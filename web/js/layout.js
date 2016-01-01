@@ -5,7 +5,8 @@
 var isFirst = true;
 var isExpand = false;
 
-$("#sidebar-collapse").click(
+
+$("#base_menu").click(
     function () {
         if (isFirst) {
             isFirst = false;
@@ -13,28 +14,41 @@ $("#sidebar-collapse").click(
         }
         if (isExpand == false) {
             isExpand = true;
-            $('#sidebar').animate(
-                {width: 250}, 500, 0, function () {
-                    var search_input = document.getElementById("search-input");
-                    search_input.placeholder = "Search";
-                }
-            );
-            $('#content').animate(
-                {paddingLeft: 250}, 500
-            );
+            if (window.screen.width >= 768) {
+                $('#sidebar').animate(
+                    {width: 250}, 500, 0, function () {
+                        var search_input = document.getElementById("search-input");
+                        search_input.placeholder = "Search";
+                    }
+                );
+                $('#content').animate(
+                    {paddingLeft: 250}, 500
+                );
+            } else {
+                $('#sidebar').animate(
+                    {width: 80}, 500, 0, function () {
+                       var search_input = document.getElementById("search-input");
+                        search_input.placeholder = "";
+                    }
+                );
+                $('#content').animate(
+                    {paddingLeft: 80}, 500
+                );
+            }
+
         } else {
             isExpand = false;
             if (window.screen.width >= 768) {
                 $('#sidebar').animate(
-                    {width: 50}, 500, 0, function () {
+                    {width: 80}, 500, 0, function () {
                         var search_input = document.getElementById("search-input");
                         search_input.placeholder = "";
                     }
                 );
                 $('#content').animate(
-                    {paddingLeft: 50}, 500
+                    {paddingLeft: 80}, 500
                 );
-            }else{
+            } else {
                 $('#sidebar').animate(
                     {width: 0}, 500, 0, function () {
                         var search_input = document.getElementById("search-input");

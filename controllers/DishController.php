@@ -9,6 +9,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\base\Controller;
+use yii\data\Pagination;
 use yii\db\Query;
 use app\models\Dish;
 
@@ -20,8 +21,6 @@ class DishController extends Controller{
      * 添加菜单
      */
     public function actionAdd(){
-
-
         $dish = new Dish();
         $res = Yii::$app->request;
         $dish->s_id = Yii::$app->user->id;
@@ -70,14 +69,25 @@ class DishController extends Controller{
             echo 'success';
             // 获取用户输入的数据，验证并保存
         }
-
     }
 
     public function actionDisplay(){
+
         $store_id = Yii::$app->user->id;
-        $res = (new Query())->from('dish')
-            ->where(['s_id' =>$store_id])
+
+        $query = (new Query())->from('dish')
+            ->where(['s_id' =>$store_id]);
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 2,
+            'totalCount' => $query->count(),
+        ]);
+
+        $res = $query->orderBy('dish_id')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
             ->all();
-        return json_encode($res);
+
+        return $this->render('display',['list'=>$res,'page' => $pagination]);
     }
 }

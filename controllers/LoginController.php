@@ -29,7 +29,7 @@ class LoginController extends Controller
                         throw new \Exception('您还没有登陆');
                     }
                     if (strcmp($action->id, 'login') == 0 || strcmp($action->id, 'signup') == 0) {
-                        throw new \Exception('您已经登陆');
+                        Yii::$app->response->redirect(['home/index']);
                     }
                 },
                 'rules' => [
