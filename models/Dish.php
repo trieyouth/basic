@@ -19,7 +19,7 @@ class Dish extends ActiveRecord
             [['dish_name', 'price'], 'required'],
             ['dish_name','string','max'=>18, 'min'=>2],
             ['s_id','email'],
-            ['price','integer'],
+            ['price','double'],
             ['discount','double','max'=>1],
             ['advice','string','max'=>100],
             ['desc','string','max'=>200],

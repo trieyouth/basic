@@ -61,8 +61,8 @@ class DishController extends Controller{
         $dish->advice = $res->post('advice');
         $dish->desc = $res->post('desc');
         $dish->p_id = $res->post('p_id');
+
         if ($dish === null) {
-            echo 'no data';
             throw new NotFoundHttpException;
         }
         if ($dish->save()) {
