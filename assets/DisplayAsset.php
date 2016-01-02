@@ -17,7 +17,7 @@ class DisplayAsset extends AssetBundle{
         'css/display.css',
     ];
     public $js = [
-
+        'js/display.js'
     ];
 
 

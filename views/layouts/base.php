@@ -30,31 +30,38 @@ FontAsset::register($this);
         window.onload = function () {
             //处理sidebar的height
             var sidebar = document.getElementById("sidebar");
+            var content = document.getElementById("content");
+            var header = document.getElementById("header");
+            var body = document.getElementById("body");
             windowHeight = window.screen.height;
-            height = windowHeight - $('header').height() - $('footer').height();
-            sidebar.style.minHeight = height + 'px';
+            body.style.height = windowHeight;
+            height = windowHeight - $('#header').height();
+            sidebar.style.maxHeight = height + 'px';
+            content.style.height = height + 'px';
             //处理item选中样式
             var item = document.getElementById('layout-menu-item-1');
             item.className = "layout-menu-item text-left";
             if (str == 'r=home' || str == 'r=home/index' || str == 'r=home%2Findex') {
                 var item1 = document.getElementById('layout-menu-item-1');
                 item1.className = "layout-menu-item text-left layout-menu-active";
-            } else if (str == 'r=dish' || str == 'r=dish/display') {
+            } else if (str == 'r=dish' || str == 'r=dish/display' || str == 'r=dish%2Fdisplay') {
                 var item2 = document.getElementById('layout-menu-item-2');
                 item2.className = "layout-menu-item text-left layout-menu-active";
+            }else if (str == 'r=dish/add' || str == 'r=dish%2Fadd') {
+                var item3 = document.getElementById('layout-menu-item-3');
+                item3.className = "layout-menu-item text-left layout-menu-active";
             }
         };
     </script>
 </head>
-<body>
+<body id = "body" style="overflow: hidden">
 <?php $this->beginBody() ?>
-<header id="header" class="base-nav clearfix" style="overflow: hidden">
+<header id="header" class="base-nav clearfix"
     <div class="container" style="width: 100%">
         <div class="navbar-brand">
             <a id="base_logo" href="<?php echo Url::to('index.php?r=home/index') ?>">
                 <img src="<?php echo Url::to('@web/img/logo.png') ?>" alt="自助点餐系统" width="250">
             </a>
-
             <div id="base_menu" class="sidebar-collapse btn">
                 <i class="fa fa-bars" data-icon1="fa fa-bars" data-icon2="fa fa-bars"></i>
             </div>
@@ -70,7 +77,7 @@ FontAsset::register($this);
     </div>
 </header>
 <section id="page">
-    <div id='sidebar' class="sidebar">
+    <div id='sidebar' class="sidebar" style="height:100%; overflow-y: hidden; ">
         <div id="null" class="sidebar-menu nav-collapse">
             <div class="divide-20"></div>
             <div id="search-bar">
@@ -99,7 +106,7 @@ FontAsset::register($this);
                 <li class="divider"></li>
                 <li>
                     <div id="layout-menu-item-3" class="layout-menu-item text-left">
-                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=dish/display") ?>">
+                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=dish/add") ?>">
                             <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">添加菜品</span>
                             <span class="selected"></span>
                         </a>
@@ -145,7 +152,7 @@ FontAsset::register($this);
             </ul>
         </div>
     </div>
-    <div id="content" class="container" style="width: 100%">
+    <div id="content" class="container" style="width: 100%;overflow-y:auto;">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
