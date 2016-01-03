@@ -9,7 +9,6 @@ namespace app\controllers;
 
 use app\models\LoginForm;
 use app\models\SignupForm;
-use app\models\User;
 use Yii;
 use yii\base\Controller;
 use yii\filters\AccessControl;
@@ -30,7 +29,7 @@ class LoginController extends Controller
                         throw new \Exception('您还没有登陆');
                     }
                     if (strcmp($action->id, 'login') == 0 || strcmp($action->id, 'signup') == 0) {
-                        throw new \Exception('您已经登陆');
+                        Yii::$app->response->redirect(['home/index']);
                     }
                 },
                 'rules' => [
@@ -74,8 +73,8 @@ class LoginController extends Controller
 
     public function actionLogout()
     {
-        Yii::app()->user->logout();
-        $this->redirect(['login/login']);//跳转的页面
+        Yii::$app->user->logout();
+        return Yii::$app->response->redirect(['login/login']);//跳转的页面
     }
 
     public function actionSignup()

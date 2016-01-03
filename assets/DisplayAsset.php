@@ -2,27 +2,28 @@
 /**
  * Created by PhpStorm.
  * User: youth
- * Date: 15-12-16
- * Time: 下午4:09
+ * Date: 15-12-30
+ * Time: 下午9:32
  */
 namespace app\assets;
 
 use yii\web\AssetBundle;
 
-class LayoutAsset extends AssetBundle{
+class DisplayAsset extends AssetBundle{
+
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/layout.css',
-        'css/common.css'
+        'css/display.css',
     ];
     public $js = [
-        'js/layout.js'
+        'js/display.js'
     ];
+
 
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'yii\bootstrap\BootstrapThemeAsset',
     ];
+
 }

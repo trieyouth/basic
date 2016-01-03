@@ -1,11 +1,6 @@
 body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
     font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
 }
-
-.error {
-    color: #a8bc7b;
-    font-size: 8em;
-    font-weight: 300;
-    position: relative;
-    text-align: left;
+.dish_box{
+    box-shadow: -2px 0 5px #D3D3D3,0 -2px 5px #D3D3D3,0 2px 5px #D3D3D3,2px 0 5px #D3D3D3;
 }

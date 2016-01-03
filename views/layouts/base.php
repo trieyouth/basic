@@ -23,88 +23,140 @@ FontAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script type="text/javascript">
+        var url = location.href;
+        var num = url.indexOf("?");
+        str = url.substr(num + 1);
+        window.onload = function () {
+            //处理sidebar的height
+            var sidebar = document.getElementById("sidebar");
+            var content = document.getElementById("content");
+            var header = document.getElementById("header");
+            var body = document.getElementById("body");
+            windowHeight = window.screen.height;
+            body.style.height = windowHeight;
+            height = windowHeight - $('#header').height();
+            sidebar.style.maxHeight = height + 'px';
+            content.style.height = height + 'px';
+            //处理item选中样式
+            var item = document.getElementById('layout-menu-item-1');
+            item.className = "layout-menu-item text-left";
+            if (str == 'r=home' || str == 'r=home/index' || str == 'r=home%2Findex') {
+                var item1 = document.getElementById('layout-menu-item-1');
+                item1.className = "layout-menu-item text-left layout-menu-active";
+            } else if (str == 'r=dish' || str == 'r=dish/display' || str == 'r=dish%2Fdisplay') {
+                var item2 = document.getElementById('layout-menu-item-2');
+                item2.className = "layout-menu-item text-left layout-menu-active";
+            }else if (str == 'r=dish/add' || str == 'r=dish%2Fadd') {
+                var item3 = document.getElementById('layout-menu-item-3');
+                item3.className = "layout-menu-item text-left layout-menu-active";
+            }
+        };
+    </script>
 </head>
-<body>
+<body id = "body" style="overflow: hidden">
 <?php $this->beginBody() ?>
-<header class="navbar clearfix">
-    <div class="container">
-        <div id="sidebar-collapse" class="sidebar-collapse btn">
-            <img class="fa fa-bars" src="<?php echo Url::to('@web/img/menu.png') ?>" height="24"/>
-        </div>
+<header id="header" class="base-nav clearfix"
+    <div class="container" style="width: 100%">
         <div class="navbar-brand">
-            <a href="<?php echo Url::to('index.php?r=home/index') ?>">
-                <img src="<?php echo Url::to('@web/img/logo.png') ?>" class="img-responsive" height="30" width="120">
+            <a id="base_logo" href="<?php echo Url::to('index.php?r=home/index') ?>">
+                <img src="<?php echo Url::to('@web/img/logo.png') ?>" alt="自助点餐系统" width="250">
             </a>
+            <div id="base_menu" class="sidebar-collapse btn">
+                <i class="fa fa-bars" data-icon1="fa fa-bars" data-icon2="fa fa-bars"></i>
+            </div>
+        </div>
+        <div class="pull-right user">
+            <div id="header-user">
+                <a href="<?php echo Url::to('index.php?r=login/logout') ?>" class="user">
+                    <img alt="" src="<?php echo Url::to('@web/img/default_head.png') ?>" style="max-height: 35px">
+                    <span class="username">登出</span>
+                </a>
+            </div>
         </div>
     </div>
 </header>
 <section id="page">
-    <div id='sidebar' class="sidebar">
+    <div id='sidebar' class="sidebar" style="height:100%; overflow-y: hidden; ">
         <div id="null" class="sidebar-menu nav-collapse">
             <div class="divide-20"></div>
             <div id="search-bar">
-                <input class="search" placeholder="Search" type="text"><i class="fa fa-search search-icon"></i>
+                <input id='search-input' class="search" placeholder="Search" type="text"><i
+                    class="fa fa-search search-icon"></i>
             </div>
             <div class="divide-20"></div>
             <ul class="list-unstyled">
-                <li class="active">
-                    <div class="layout-menu-item text-left">
-                        <a class="text-muted" href="">
+                <li>
+                    <div id="layout-menu-item-1" class="layout-menu-item text-left layout-menu-active">
+                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=home/index") ?>">
                             <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
                             <span class="selected"></span>
                         </a>
                     </div>
                 </li>
-                <li class="active">
-                    <div class="layout-menu-item text-left">
-                        <a class="text-muted" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                <li class="divider"></li>
+                <li>
+                    <div id="layout-menu-item-2" class="layout-menu-item text-left">
+                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=dish/display") ?>">
+                            <i class="fa fa-th-large fa-fw font-icon"></i> <span class="menu-text">菜单展示</span>
                             <span class="selected"></span>
                         </a>
                     </div>
                 </li>
-                <li class="active">
-                    <div class="layout-menu-item text-left">
-                        <a class="text-muted" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                <li class="divider"></li>
+                <li>
+                    <div id="layout-menu-item-3" class="layout-menu-item text-left">
+                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=dish/add") ?>">
+                            <i class="fa fa-plus-square fa-fw font-icon"></i> <span class="menu-text">添加菜品</span>
                             <span class="selected"></span>
                         </a>
                     </div>
                 </li>
-                <li class="active">
-                    <div class="layout-menu-item text-left">
-                        <a class="text-muted" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                <li class="divider"></li>
+                <li>
+                    <div id="layout-menu-item-4" class="layout-menu-item text-left">
+                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=seat/display") ?>">
+                            <i class="fa fa-user-secret fa-fw font-icon"></i> <span class="menu-text">座位情况</span>
                             <span class="selected"></span>
                         </a>
                     </div>
                 </li>
-                <li class="active">
-                    <div class="layout-menu-item text-left">
-                        <a class="text-muted" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                <li class="divider"></li>
+                <li>
+                    <div id="layout-menu-item-5" class="layout-menu-item text-left">
+                        <a class="text-muted col-lg-12" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">日收益列表</span>
                             <span class="selected"></span>
                         </a>
                     </div>
                 </li>
-                <li class="active">
-                    <div class="layout-menu-item text-left">
-                        <a class="text-muted" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                <li class="divider"></li>
+                <li>
+                    <div id="layout-menu-item-6" class="layout-menu-item text-left">
+                        <a class="text-muted col-lg-12" href="">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">月收益列表</span>
                             <span class="selected"></span>
                         </a>
                     </div>
                 </li>
-                <li class="active">
-                    <div class="layout-menu-item text-left">
-                        <a class="text-muted" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                <li class="divider"></li>
+                <li>
+                    <div id="layout-menu-item-7" class="layout-menu-item text-left">
+                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=income/table") ?>">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">收益趋势图</span>
                             <span class="selected"></span>
                         </a>
                     </div>
                 </li>
+                <li class="divider"></li>
             </ul>
         </div>
+    </div>
+    <div id="content" class="container" style="width: 100%;overflow-y:auto;">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <?= $content ?>
     </div>
 </section>
 
