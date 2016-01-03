@@ -107,7 +107,7 @@ FontAsset::register($this);
                 <li>
                     <div id="layout-menu-item-3" class="layout-menu-item text-left">
                         <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=dish/add") ?>">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">添加菜品</span>
+                            <i class="fa fa-plus-square fa-fw font-icon"></i> <span class="menu-text">添加菜品</span>
                             <span class="selected"></span>
                         </a>
                     </div>
@@ -115,8 +115,8 @@ FontAsset::register($this);
                 <li class="divider"></li>
                 <li>
                     <div id="layout-menu-item-4" class="layout-menu-item text-left">
-                        <a class="text-muted col-lg-12" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=seat/display") ?>">
+                            <i class="fa fa-user-secret fa-fw font-icon"></i> <span class="menu-text">座位情况</span>
                             <span class="selected"></span>
                         </a>
                     </div>
@@ -125,7 +125,7 @@ FontAsset::register($this);
                 <li>
                     <div id="layout-menu-item-5" class="layout-menu-item text-left">
                         <a class="text-muted col-lg-12" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">日收益列表</span>
                             <span class="selected"></span>
                         </a>
                     </div>
@@ -134,7 +134,7 @@ FontAsset::register($this);
                 <li>
                     <div id="layout-menu-item-6" class="layout-menu-item text-left">
                         <a class="text-muted col-lg-12" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">月收益列表</span>
                             <span class="selected"></span>
                         </a>
                     </div>
@@ -142,8 +142,8 @@ FontAsset::register($this);
                 <li class="divider"></li>
                 <li>
                     <div id="layout-menu-item-7" class="layout-menu-item text-left">
-                        <a class="text-muted col-lg-12" href="">
-                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">控制台</span>
+                        <a class="text-muted col-lg-12" href="<?php echo Url::to("index.php?r=income/table") ?>">
+                            <i class="fa fa-tachometer fa-fw font-icon"></i> <span class="menu-text">收益趋势图</span>
                             <span class="selected"></span>
                         </a>
                     </div>

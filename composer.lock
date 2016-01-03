@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cc94351cabff46275e5618269df124aa",
-    "content-hash": "9b7f8f9624697319a056e591d4b2398d",
+    "hash": "37313dd8906982ddc7ae401efe98e987",
+    "content-hash": "0c5bff545cb640668c6b270f8eb39f95",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -54,6 +54,44 @@
                 "mobile-first",
                 "responsive",
                 "web"
+            ]
+        },
+        {
+            "name": "bower-asset/echarts",
+            "version": "2.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ecomfe/echarts.git",
+                "reference": "8eeb7e5abe207d0536c62ce1f4ddecc6adfdf85e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ecomfe/echarts/zipball/8eeb7e5abe207d0536c62ce1f4ddecc6adfdf85e",
+                "reference": "8eeb7e5abe207d0536c62ce1f4ddecc6adfdf85e",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "build/dist/echarts.js"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "doc"
+                ]
+            },
+            "license": [
+                "BSD"
+            ],
+            "description": "Enterprise Charts 【Baidu Hi : 1379172 | Email : echarts@baidu.com】",
+            "keywords": [
+                "baidu",
+                "canvas",
+                "data visualization",
+                "echarts"
             ]
         },
         {
@@ -364,6 +402,51 @@
                 "icon"
             ],
             "time": "2015-11-30 17:28:02"
+        },
+        {
+            "name": "hisune/echarts-php",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hisune/Echarts-PHP.git",
+                "reference": "80603449aa58b1c2dd03a6a9c4f1d426db1d0785"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hisune/Echarts-PHP/zipball/80603449aa58b1c2dd03a6a9c4f1d426db1d0785",
+                "reference": "80603449aa58b1c2dd03a6a9c4f1d426db1d0785",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hisune\\EchartsPHP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Hisune",
+                    "email": "hi@hisune.com",
+                    "homepage": "http://hisune.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A php wrapper for echarts javascript libraries",
+            "homepage": "http://hisune.com",
+            "keywords": [
+                "charts",
+                "echarts",
+                "javascript",
+                "php"
+            ],
+            "time": "2015-11-25 10:33:54"
         },
         {
             "name": "kartik-v/bootstrap-fileinput",

@@ -6,6 +6,7 @@ use yii\base\Controller;
 use app\models\Order;
 use app\models\Orderdish;
 use app\models\Dish;
+use yii\filters\AccessControl;
 use yii\web\Session;
 
 $session = new Session;
@@ -19,6 +20,27 @@ $session->open();
  */
 class OrderController extends Controller
 {
+
+
+    public function behaviors()//行为验证 是登陆状态还是登出状态 要有什么操作
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index'],
+                'denyCallback' => function ($rule, $action) {
+                    Yii::$app->response->redirect(['login/login']);
+                },
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => ['@'],//已登录的身份
+                    ],
+                ],
+            ],
+        ];
+    }
 
     public function actionAdddish()//id为dish_id
     {
@@ -99,14 +121,16 @@ class OrderController extends Controller
         $order->desc = $res->post('desc');
         $order->price = $this->actionAccprice();
         if ($order->validate()) {
-            foreach($_SESSION['dishlist'] as $dish){
+            foreach ($_SESSION['dishlist'] as $dish) {
                 $one = new Orderdish();
                 $one->o_id = $order->o_id;
                 $one->d_id = $dish['dish_id'];
                 $one->count = $dish['num'];
                 $one->price = $dish['price'];
-                if ($one->validate()&&$one->save()) {
-                }else{error('error');}
+                if ($one->validate() && $one->save()) {
+                } else {
+                    error('error');
+                }
             }
             $order->save();
             return 'success';
@@ -129,18 +153,20 @@ class OrderController extends Controller
     /**
      *显示一个已完成的菜单 传入订单号 付账时或者查看自己的订单时使用（客户用）
      */
-    public function actionListforder(){
+    public function actionListforder()
+    {
         $o_id = $_POST['id'];
-        $order = Order::find()->where(['o_id'=>$o_id])->one()->attributes;
+        $order = Order::find()->where(['o_id' => $o_id])->one()->attributes;
         return json_encode($order);
     }
 
     /**
      *显示一个完成的菜单中的每一个菜(客户用)
      */
-    public function actionListfdish(){
+    public function actionListfdish()
+    {
         $o_id = $_POST['o_id'];
-        $dish = Orderdish::find()->where(['o_id'=>$o_id])->asArray()->all();
+        $dish = Orderdish::find()->where(['o_id' => $o_id])->asArray()->all();
         return json_encode($dish);
     }
 
@@ -151,7 +177,7 @@ class OrderController extends Controller
     {
         //$s_id = '1@qq.com';
         $s_id = Yii::$app->user->id;
-        $orderList = Order::find()->where(['s_id'=>$s_id,'e_time'=>null])->one()->attributes;
+        $orderList = Order::find()->where(['s_id' => $s_id, 'e_time' => null])->one()->attributes;
         return json_encode($orderList);
         //使用此函数需要详细菜单时调用actionlishdish()
     }
@@ -174,9 +200,10 @@ class OrderController extends Controller
 
     }
 
-    public function actionGetoid(){
-        echo mt_srand((double)microtime()*1000000);
-        return date('Ymd').str_pad(mt_rand(1,99999),5,'0',STR_PAD_LEFT);
+    public function actionGetoid()
+    {
+        echo mt_srand((double)microtime() * 1000000);
+        return date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
     }
 
     public function actionAccprice()

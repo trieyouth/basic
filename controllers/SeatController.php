@@ -4,6 +4,7 @@ namespace app\controllers;
 use Yii;
 use yii\base\Controller;
 use app\models\Seat;
+use yii\filters\AccessControl;
 
 /**
  * Created by PhpStorm.
@@ -14,6 +15,29 @@ use app\models\Seat;
 
 
 class SeatController extends Controller{
+
+
+
+
+    public function behaviors()//行为验证 是登陆状态还是登出状态 要有什么操作
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index'],
+                'denyCallback' => function ($rule, $action) {
+                     Yii::$app->response->redirect(['login/login']);
+                },
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index'],
+                        'roles' => ['@'],//已登录的身份
+                    ],
+                ],
+            ],
+        ];
+    }
 
     /**
      *
@@ -107,16 +131,14 @@ class SeatController extends Controller{
         }
     }
 
-
     /**
      *
      */
     public function actionDisplay(){
 
         $s_id = Yii::$app->user->id;
-        //$s_id = '1@qq.com';
-        $dishes = Seat::find()->where(['s_id'=>$s_id])->asArray()->all();
-        return json_encode($dishes);
+        $seat = Seat::find()->where(['s_id'=>$s_id])->asArray()->all();
+        return json_encode($seat);
     }
 
 }
